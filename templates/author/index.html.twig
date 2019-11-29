@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'All authors'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>{{ 'All authors'|trans }}</h1>
+    </div>
+<div class="list-group author-list">
+{% for row in authors %}
+<div class="list-group-item d-flex justify-content-between align-items-center">
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('author_edit', {'id': row.author.id}) }}" class="note-author-name">
+    {{ row.author.fullname }}
+  </a>
+{% else %}
+<a href="{{ path('author_notes_list', {'id': row.author.id}) }}" class="note-author-name">
+    {{ row.author.fullname }}
+</a>
+{% endif %}
+<a href="{{ path('author_notes_list', {'id': row.author.id}) }}" class="badge badge-dark">
+    {{ row.numnotes }}
+</a>
+</div>{% endfor %}
+</div>
+{% endblock %}

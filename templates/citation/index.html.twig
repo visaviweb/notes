@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Notes'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+<blockquote class="blockquote">{{ citation.content|raw }}
+<footer class="note-footer">
+<a href="{{ path('author_notes_list', {'id': citation.author.id}) }}" class="note-author-name">{{ citation.author }}</a>,
+<span class="note-ref">
+{% if citation.note is not empty %}
+{{ citation.note }},
+{% endif %}
+{% if is_granted('ROLE_ADMIN') %}
+{{ citation.createdDate|localizeddate('short', 'none') }}
+{% else %}
+{{ citation.createdDate|localizeddate('short', 'none') }}
+{% endif %}
+</span>
+</footer></blockquote>
+</div>
+{% endblock %}

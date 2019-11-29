@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'New note'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid pb-5">
+   <h1>{{ 'New note'|trans }}</h1>
+
+    {{ include('citation/_form.html.twig') }}
+</div>
+<footer class="footer-nav"><div class="container-fluid p-0">
+<a href="{{ path('citation_index') }}" class="btn btn-info d-block w-100 rounded-0" title="{{ 'Back to the home'|trans }}"><i class="fas fa-home"></i></a>
+</footer>
+
+{% endblock %}

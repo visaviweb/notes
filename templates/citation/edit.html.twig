@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Edit note'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid pb-5">
+     <h1>{{ 'Edit note'|trans }}</h1>
+
+    {{ include('citation/_form.html.twig', {'button_label': 'Save'}) }}
+</div>
+<footer class="footer-nav"><div class="container-fluid p-0"><div class="row no-gutters">
+     <a href="{{ path('citation_index') }}" class="btn btn-info d-block col rounded-0" title="{{ 'Back to the home'|trans }}"><i class="fas fa-home"></i></a>
+    {% if author is defined %}
+    <a href="{{ path('author_notes_list', {'id': author.id }) }}" class="btn btn-success d-block col rounded-0" title="{{ 'Author Notes'|trans({ 'author' : author.fullname }) }}"><i class="fas fa-list-alt"></i></a>
+    {% endif %}
+    {{ include('citation/_duplicate_form.html.twig') }} {{ include('citation/_delete_form.html.twig') }}
+    </div></div>
+</footer>
+{% endblock %}

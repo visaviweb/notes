@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Edit author'|trans({'author': author}) }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid pb-5">
+    <h1>{{ 'Edit author'|trans({'author': author}) }}</h1>
+
+    {{ include('author/_form.html.twig', {'button_label': 'Save'}) }}
+</div>
+<footer class="footer-nav"><div class="container-fluid p-0"><div class="row no-gutters">
+ <a href="{{ path('author_index') }}" class="btn btn-info d-block col rounded-0" title="{{ 'Author list'|trans }}"><i class="fas fa-users" aria-hidden="true"></i></a>
+    
+    <a href="{{ path('author_notes_list', {'id': author.id }) }}" class="btn btn-success d-block col rounded-0" title="{{ 'Author Notes'|trans({ 'author' : author.fullname }) }}"><i class="fas fa-list-alt"></i></a>
+    {{ include('author/_delete_form.html.twig') }}
+</div>
+{% endblock %}

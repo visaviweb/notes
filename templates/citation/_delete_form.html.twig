@@ -1,0 +1,5 @@
+<form class="form-inline d-block col" method="post" action="{{ path('citation_delete', {'id': citation.id}) }}" onsubmit="return confirm('{{'Delete note confirm'|trans }}');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ citation.id) }}">
+    <button class="btn btn-danger rounded-0 w-100" title="{{ 'Delete'|trans }}"><i class="fas fa-trash-alt"></i></button>
+</form>

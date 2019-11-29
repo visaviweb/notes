@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Notes'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid  container-note">
+{% if search is defined %}
+<h1>{{ titre|trans({'search': search}) }}</h1>
+{% elseif author is defined %}
+<h1 >{{ titre|trans({'author': author}) }}</h1>
+{% else %}
+<h1 >{{ titre|trans }}</h1>
+{% endif %}
+</div>
+<div id="notes-list">
+{% for citation in citations %}
+<div class="container-fluid container-note pt-3">
+<blockquote class="blockquote">{{ citation.content|raw }}
+<footer class="note-footer">
+{% if author is defined %}
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('author_edit', {'id': author.id}) }}" class="note-author-name">{{ author }}</a>,
+{% else %}
+<span class="note-author-name">{{ author }}</span>,
+{% endif %}
+{% else %}
+<a href="{{ path('author_notes_list', {'id': citation.author.id}) }}" class="note-author-name">{{ citation.author }}</a>,{% endif %}
+<span class="note-ref">
+{% if citation.note is not empty %}
+{{ citation.note }},
+{% endif %}
+{% if is_granted('ROLE_ADMIN') %}
+<a href="{{ path('citation_edit', {'id': citation.id}) }}">{{ citation.createdDate|localizeddate('short', 'none') }}</a>
+{% else %}
+{{ citation.createdDate|localizeddate('short', 'none') }}
+{% endif %}
+</span></footer></blockquote>
+</div>
+{% endfor %}
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+{% if search is defined %}
+<script>
+var context = document.querySelector("#notes-list");
+var instance = new Mark(context);
+instance.mark("{{ search | escape('js') }}", {
+    "done": function(counter){
+        // counter is a counter indicating the total number of all marks
+        console.log('cont: ' + counter);
+    }
+});
+
+</script>
+{% endif %}
+{% endblock %}

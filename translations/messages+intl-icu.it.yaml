@@ -1,0 +1,43 @@
+Search: Cerca
+Search result: 'Risultati per "{search}"'
+Search too short: 'Parola troppo breve per la ricerca (min. 3 caratteri)'
+Author Notes: 'Note su {author}'
+# form label
+Content: Testo
+Note: Riferimenti
+Created date: Data
+Year: Anno
+Month: Mese
+Day: giorno
+Author: Autore
+New author: Oppure nuovo autore
+Delete: Eliminare
+Back to the list: Ritorno alla lista
+Edit: Modifica
+Edit note: Modificare la nota
+Save: Registrare
+Edit author: 'Modificare {author}'
+# texts
+Notes: Note
+New note: Nuova nota
+All authors: Tutti gli autori
+Create a new author: Creare un nuovo autore
+# Author form
+Fullname: Nome
+#login form
+Sign in: Accedi
+'You are logged in as {user}': 'Sei connesso come {user}'
+Logout: Esci
+Please sign in: Accedi
+Username: Nome
+Password: Password
+Delete note confirm: Sei siccuro di volere eliminare questa nota?
+Duplicate confirm: Sei siccuro di volere duplicare questa nota?
+Duplicate: Duplicare
+# messages
+Change Saved: Le modifiche sono state registrate!
+Note created: La nota è stata creata!
+Note deleted: La nota è stata eliminata!
+Note duplicated: La nota è stata duplicata!
+Delete author confirm: Sei siccuro di volere eliminare questo autore? Questo eliminera definitivamente tutte le sue note!
+Author deleted: Autore eliminato!

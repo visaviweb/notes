@@ -1,0 +1,45 @@
+Search: Rechercher
+Search result: 'Resultats pour "{search}"'
+Search too short: 'Mot trop court pour effectuer la recherche (min. 3 caractères)'
+Author Notes: 'Notes sur {author}'
+# form label
+Content: Texte
+Note: Références
+Created date: Date
+Year: Année
+Month: Mois
+Day: Jour
+Author: Auteur
+New author: Ou nouvel auteur
+Delete: Supprimer
+Back to the list: 'Retour à la liste'
+Edit: Modifier
+Edit note: Modifier la note
+Save: Enregistrer
+Edit author: 'Modifier {author}'
+# texts
+Notes: Notes
+New note: Nouvelle note
+All authors: Tous les auteurs
+Create a new author: 'Créer un nouvel auteur'
+# Author form
+Fullname: Nom
+#login form
+Sign in: Connection
+'You are logged in as {user}': 'Vous êtes connectez comme {user}'
+Logout: Déconnection
+Please sign in: Connectez-vous
+Username: Nom utilisateur
+Password: Mot de passe
+Delete note confirm: Vous êtes sûr de vouloir supprimer cette note?
+Duplicate confirm: Vous êtes sûr de vouloir dupliquer cette note?
+Duplicate: Dupliquer
+# messages
+Change Saved: Modifications enregistrées
+Note created: Nouvelle note créée !
+Note deleted: Note supprimée !
+Note duplicated: Note dupliquée !
+Delete author confirm: Vous êtes sûr de vouloir supprimer cet auteur ? Toutes ses notes seront définitivement supprimées !
+Author deleted: Auteur supprimé !
+
+

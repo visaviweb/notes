@@ -1,0 +1,5 @@
+<form class="form-inline d-block col" method="post" action="{{ path('author_delete', {'id': author.id}) }}" onsubmit="return confirm('{{'Delete author confirm'|trans }}');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ author.id) }}">
+    <button class="btn btn-danger rounded-0 w-100" title="{{ 'Delete'|trans }}"><i class="fas fa-trash-alt"></i></button>
+</form>

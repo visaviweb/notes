@@ -1,0 +1,4 @@
+<form class="form-inline d-block col" method="post" action="{{ path('citation_duplicate', {'id': citation.id}) }}" onsubmit="return confirm('{{'Duplicate confirm'|trans }}')">
+    <input type="hidden" name="_token" value="{{ csrf_token('duplicate' ~ citation.id) }}">
+    <button class="btn btn-warning btn-duplicate rounded-0 w-100" title="{{ 'Duplicate'|trans }}"><i class="fas fa-clone"></i></button>
+</form>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+<meta name="robots" content="noindex, nofollow">    
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+</head>
+    <body class="d-flex flex-column">
+     {% block header %}
+        <nav class="navbar navbar-expand-md navbar-default navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand"  href="{{ path('citation_index') }}">
+                    Notes
+                    </a>
+                 <div>
+                <ul class="navbar-nav flex-row">
+                {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item"><a class="nav-link" href="{{ path('citation_new') }}" alt="Nouvelle note" title="Nouvelle note">
+                                <i class="fas fa-plus-square" aria-hidden="true"></i>
+                                </a>
+                        {% endif %}
+                            <li class="nav-item"><a class="nav-link" href="{{ path('author_index') }}" alt="Auteurs" title="Auteurs">
+                                <i class="fas fa-users" aria-hidden="true"></i> 
+                            </a>
+                            <li class="nav-item">
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <a class="nav-link" href="{{ path('app_logout') }}" alt="Se déconnecter" title="Se déconnecter">
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                            </a>{% else %}
+                            <a class="nav-link" href="{{ path('app_login') }}" alt="Se connecter" title="Se connecter">
+                                <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                            </a>{% endif %}
+                            </li>
+                 </ul>
+                 </div>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav ml-auto">
+                        {{ render(controller(
+                        'App\\Controller\\CitationController::showSearch'
+                    )) }}
+                    </div>
+                </div>
+            </div>
+        </nav>
+<div class="container-fluid">
+{% for message in app.flashes('success') %}
+    <div class="alert alert-light rounded-0 border-top border-white w-100 text-info">
+        {{ message|trans }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('notice') %}
+    <div class="alert alert-light rounded-0 border-top border-white w-100 text-info">
+        {{ message|trans }}
+    </div>
+{% endfor %}
+{% for label, messages in app.flashes(['warning', 'error']) %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} rounded-0 border-top border-white w-100">
+            {{ message|trans }}
+        </div>
+    {% endfor %}
+{% endfor %}
+</div>
+{% endblock %}
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>
