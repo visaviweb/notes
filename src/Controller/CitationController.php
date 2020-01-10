@@ -47,6 +47,7 @@ class CitationController extends AbstractController
             if ($new) {
                 $author = new Author();
                 $author->setFullname($new);
+                $author->setlastName($new);
                 $entityManager->persist($author);
                 $entityManager->flush();
                 $citation->setAuthor($author);
@@ -86,6 +87,7 @@ class CitationController extends AbstractController
             if ($new = $form->get('new_author')->getData()) {
                 $author = new Author();
                 $author->setFullname($new);
+                $author->setlastName($new);
                 $entityManager->persist($author);
                 $entityManager->flush();
                 $citation->setAuthor($author);

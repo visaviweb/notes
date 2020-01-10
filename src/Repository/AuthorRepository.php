@@ -21,7 +21,7 @@ class AuthorRepository extends ServiceEntityRepository
     public function getOrderedAuthorsQuery()
     {
         return $this->createQueryBuilder('a')
-                    ->orderBy('a.fullname', "ASC");
+                    ->orderBy('a.lastName', "ASC");
     }
 
     public function findAllWithNotesCount()
@@ -30,7 +30,7 @@ class AuthorRepository extends ServiceEntityRepository
                     ->select('a as author')
                     ->leftjoin('a.citations', 'n')
                     ->addSelect("COUNT(n.id) as numnotes")
-                    ->orderBy('a.fullname', "ASC")
+                    ->orderBy('a.lastName', "ASC")
                     ->groupBy('n.author')
                     ->getQuery()
                     ->getResult();

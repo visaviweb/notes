@@ -23,7 +23,9 @@ New note: Nuova nota
 All authors: Tutti gli autori
 Create a new author: Creare un nuovo autore
 # Author form
-Fullname: Nome
+Fullname: Nome visualizzato
+first_name: Nome
+last_name: Cognome
 #login form
 Sign in: Accedi
 'You are logged in as {user}': 'Sei connesso come {user}'

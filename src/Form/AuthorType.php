@@ -13,6 +13,8 @@ class AuthorType extends AbstractType
     {
         $builder
             ->add('fullname')
+            ->add('firstName')
+            ->add('lastName')
         ;
     }
 
