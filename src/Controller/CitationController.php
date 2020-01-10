@@ -82,6 +82,14 @@ class CitationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            if ($new = $form->get('new_author')->getData()) {
+                $author = new Author();
+                $author->setFullname($new);
+                $entityManager->persist($author);
+                $entityManager->flush();
+                $citation->setAuthor($author);
+            }
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Change Saved');
             return $this->redirectToRoute('citation_show', ['id' => $citation->getId()]);
