@@ -3,7 +3,7 @@
 {% block title %}{{ 'Notes'|trans }}{% endblock %}
 
 {% block body %}
-<div class="container-fluid  container-note">
+<div class="container-fluid container-note">
 {% if search is defined %}
 <h1>{{ titre|trans({'search': search}) }}</h1>
 {% elseif author is defined %}
@@ -14,7 +14,7 @@
 </div>
 <div id="notes-list">
 {% for citation in citations %}
-<div class="container-fluid container-note pt-3">
+<div class="pt-3 container-fluid container-note">
 <blockquote class="blockquote">{{ citation.content|raw }}
 <footer class="note-footer">
 {% if author is defined %}

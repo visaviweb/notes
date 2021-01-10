@@ -12,7 +12,7 @@
 {{ citation.note }},
 {% endif %}
 {% if is_granted('ROLE_ADMIN') %}
-{{ citation.createdDate|localizeddate('short', 'none') }}
+<a href="{{ path('citation_edit', {'id': citation.id}) }}">{{ citation.createdDate|localizeddate('short', 'none') }}</a>
 {% else %}
 {{ citation.createdDate|localizeddate('short', 'none') }}
 {% endif %}

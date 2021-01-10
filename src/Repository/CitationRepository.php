@@ -68,12 +68,16 @@ class CitationRepository extends ServiceEntityRepository
     */
 
 
-    public function search($value)
+    public function search($value, $numResult = 100)
     {
-        return $this->createQueryBuilder('c')
-            ->where('c.content like :val')
+        $q = $this->createQueryBuilder('c');
+        if (mb_strlen($value) > 2) {
+            $q->where('c.content like :val')
             ->orWhere('c.note like :val')
-            ->setParameter('val', '%'.$value.'%')
+            ->setParameter('val', '%'.$value.'%');
+        }
+        return $q->orderBy('c.created_date', 'DESC')
+            ->setMaxResults($numResult)
             ->getQuery()
             ->getResult()
         ;

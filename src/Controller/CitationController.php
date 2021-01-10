@@ -136,6 +136,7 @@ class CitationController extends AbstractController
         return $this->redirectToRoute('citation_index');
     }
 
+    
     /**
      * @Route("/search", name="search", methods={"GET"})
     */
@@ -145,13 +146,12 @@ class CitationController extends AbstractController
         $searchform->handleRequest($request);
         if ($searchform->isSubmitted() && $searchform->isValid()) {
             $data = $searchform->getData();
-            if (mb_strlen($data['text']) < 3) {
-                $title = 'Search too short';
-                $citations = array();
+            if (mb_strlen($data['text']) < 1) {
+                $title = 'Last Notes';
             } else {
                 $title = 'Search result';
-                $citations = $citationRepository->search($data['text']);
             }
+            $citations = $citationRepository->search($data['text']);
         }
 
         return $this->render('citation/list.html.twig', [
